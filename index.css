@@ -1,0 +1,132 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 50% 10%;
+    --foreground: 210 40% 98%;
+
+    --card: 240 50% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 240 50% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 263 80% 65%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217 70% 60%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 240 20% 20%;
+    --muted-foreground: 240 10% 70%;
+
+    --accent: 192 70% 60%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 80% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 30% 20%;
+    --input: 240 30% 20%;
+    --ring: 263 70% 65%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(at 10% 0%, rgba(165, 127, 255, 0.2) 0px, transparent 50%),
+      radial-gradient(at 90% 90%, rgba(59, 130, 246, 0.2) 0px, transparent 50%),
+      linear-gradient(to bottom right, rgba(108, 0, 255, 0.05), rgba(0, 216, 255, 0.05));
+    background-attachment: fixed;
+  }
+
+  .futuristic-card {
+    @apply rounded-xl border border-white/10 bg-card/30 shadow-lg backdrop-blur-lg;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(149, 93, 245, 0.1);
+  }
+
+  .glass-panel {
+    @apply rounded-xl bg-white/10 backdrop-blur-lg border border-white/20;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2), 0 0 10px rgba(149, 93, 245, 0.1);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-main-gradient font-bold;
+  }
+
+  .gradient-border {
+    @apply relative rounded-lg p-[1px] overflow-hidden bg-main-gradient;
+  }
+  
+  .gradient-border-content {
+    @apply bg-background rounded-lg relative z-10 h-full w-full;
+  }
+
+  .glow {
+    box-shadow: 0 0 15px rgba(149, 93, 245, 0.5);
+  }
+
+  .glow:hover {
+    box-shadow: 0 0 20px rgba(149, 93, 245, 0.7), 0 0 30px rgba(79, 70, 229, 0.3);
+  }
+
+  .neon-highlight {
+    text-shadow: 0 0 5px rgba(149, 93, 245, 0.7);
+  }
+
+  .neon-border {
+    @apply border border-transparent;
+    box-shadow: 0 0 5px rgba(149, 93, 245, 0.5), inset 0 0 5px rgba(149, 93, 245, 0.3);
+  }
+}
+
+@layer components {
+  .animate-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+
+  .gradient-button {
+    @apply bg-main-gradient hover:opacity-90 transition-all duration-200 text-white font-medium rounded-lg px-5 py-2.5 focus:outline-none;
+    box-shadow: 0 0 15px rgba(149, 93, 245, 0.3);
+  }
+
+  .layout-grid {
+    @apply grid min-h-screen;
+    grid-template-rows: auto 1fr auto;
+  }
+  
+  .job-card {
+    @apply futuristic-card p-6 transition-all duration-300 hover:scale-[1.01] hover:shadow-lg;
+  }
+  
+  .neon-button {
+    @apply relative px-5 py-2.5 rounded-lg bg-background border border-primary/40 text-primary hover:text-white transition-all duration-300;
+    box-shadow: 0 0 10px rgba(149, 93, 245, 0.3), inset 0 0 10px rgba(149, 93, 245, 0.1);
+  }
+  
+  .neon-button:hover {
+    box-shadow: 0 0 15px rgba(149, 93, 245, 0.5), inset 0 0 15px rgba(149, 93, 245, 0.3);
+  }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow-pulse {
+  0% { box-shadow: 0 0 5px rgba(149, 93, 245, 0.3); }
+  50% { box-shadow: 0 0 15px rgba(149, 93, 245, 0.5); }
+  100% { box-shadow: 0 0 5px rgba(149, 93, 245, 0.3); }
+}
